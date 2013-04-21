@@ -1,0 +1,6 @@
+Config:
+  Debug: true
+  Chests:
+    Restock X Minutes After Opened: 1
+    Stock X Minutes After Server Start: 1
+    Wipe Chests On Server Start: true

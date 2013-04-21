@@ -1,0 +1,22 @@
+Chests:
+  test_weap_chest:
+    World: world
+    X: 79
+    Y: 91
+    Z: 243
+    Profile: weap_example
+    Count: 2
+  test_arm_chest:
+    World: world
+    X: 70
+    Y: 98
+    Z: 246
+    Profile: arm_example
+    Count: 2
+  test_food_chest:
+    World: world
+    X: 85
+    Y: 88
+    Z: 253
+    Profile: food_example
+    Count: 3
