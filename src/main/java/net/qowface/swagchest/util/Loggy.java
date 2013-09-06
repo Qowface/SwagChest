@@ -2,15 +2,15 @@ package net.qowface.swagchest.util;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import net.qowface.swagchest.SwagChest;
+import org.bukkit.plugin.Plugin;
 
 public class Loggy {
     
-    private SwagChest plugin;
+    private Plugin plugin;
     private Logger log;
     private boolean debug;
     
-    public Loggy(SwagChest plugin) {
+    public Loggy(Plugin plugin) {
         this.plugin = plugin;
         log = plugin.getLogger();
         debug = plugin.getConfig().getBoolean("Config.Debug");
