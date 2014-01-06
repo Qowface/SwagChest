@@ -5,8 +5,14 @@ import net.qowface.swagchest.SwagChest;
 import net.qowface.swagchest.commands.AdminCommands;
 import net.qowface.swagchest.data.ChestObject;
 import org.bukkit.Location;
+import org.bukkit.event.Listener;
 
-public class SwagListener {
+/**
+ * Abstract event listener for SwagChest.
+ * 
+ * @author Qowface
+ */
+public abstract class SwagListener implements Listener {
     
     protected SwagChest plugin;
     protected AdminCommands cmds;

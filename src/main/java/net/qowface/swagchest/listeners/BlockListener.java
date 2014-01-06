@@ -2,28 +2,31 @@ package net.qowface.swagchest.listeners;
 
 import net.qowface.swagchest.SwagChest;
 import net.qowface.swagchest.commands.AdminCommands;
-import net.qowface.swagchest.data.ChestObject;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class BlockListener extends SwagListener implements Listener {
+/**
+ * Handles all Block events.
+ * 
+ * @author Qowface
+ */
+public class BlockListener extends SwagListener {
     
     public BlockListener(SwagChest plugin, AdminCommands cmds) {
         super(plugin, cmds);
     }
     
-    @EventHandler(priority = EventPriority.NORMAL)
+    /**
+     * Prevents registered chests from being broken.
+     * If this is a chest and is registered, cancel the break.
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
-        if (event.isCancelled()) {
-            return;
-        }
-        
         Block block = event.getBlock();
         Player player = event.getPlayer();
         

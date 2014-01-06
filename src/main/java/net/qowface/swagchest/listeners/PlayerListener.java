@@ -10,22 +10,27 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-public class PlayerListener extends SwagListener implements Listener {
+/**
+ * Handles all Player events.
+ * 
+ * @author Qowface
+ */
+public class PlayerListener extends SwagListener {
     
     public PlayerListener(SwagChest plugin, AdminCommands cmds) {
         super(plugin, cmds);
     }
     
-    @EventHandler(priority = EventPriority.NORMAL)
+    /**
+     * Displays chest information to administrators.
+     * If the Player has permission and has administrator mode active, displays
+     * chest coordinates and registration status.
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (event.isCancelled()) {
-            return;
-        }
-        
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block block = event.getClickedBlock();
             
