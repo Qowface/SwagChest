@@ -19,46 +19,41 @@ public class SwagChest extends JavaPlugin {
     private ChestData chestData;
     private ItemProfileData itemData;
     
-    private BlockListener blockListener;
-    private PlayerListener playerListener;
-    
     private AdminCommands adminCommands;
     
     private HashMap<String, PopulateChest> chestTasks = new HashMap<String, PopulateChest>();
     
     @Override
     public void onEnable() {
-        //Setup config
+        // Setup config
         if (getConfig().options().header() == null) {
             getConfig().options().copyHeader();
             getConfig().options().copyDefaults(true);
             saveConfig();
         }
         
-        //Initialize logger
+        // Initialize logger
         log = new Loggy(this);
         
-        //Setup data files
+        // Initialize data
         chestData = new ChestData(this);
         itemData = new ItemProfileData(this);
         
-        //Register commands
+        // Register commands
         adminCommands = new AdminCommands(this);
         getCommand("swagadmin").setExecutor(adminCommands);
         
-        //Register event listeners
+        // Register event listeners
         PluginManager pm = this.getServer().getPluginManager();
-        blockListener = new BlockListener(this, adminCommands);
-        pm.registerEvents(blockListener, this);
-        playerListener = new PlayerListener(this, adminCommands);
-        pm.registerEvents(playerListener, this);
+        pm.registerEvents(new BlockListener(this, adminCommands), this);
+        pm.registerEvents(new PlayerListener(this, adminCommands), this);
         
-        //Setup task to clear tasks if enabled
+        // Setup task to clear tasks if enabled
         if (getConfig().getBoolean("Config.Chests.Wipe Chests On Server Start")) {
             ClearAllChests clearTask = new ClearAllChests(this);
         }
         
-        //Setup initial chest population tasks
+        // Setup initial chest population tasks
         for (String key : getChestData().getChests().keySet()) {
             PopulateChest chestTask = new PopulateChest(this, key, true);
         }

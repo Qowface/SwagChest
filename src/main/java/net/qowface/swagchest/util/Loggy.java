@@ -4,6 +4,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.bukkit.plugin.Plugin;
 
+/**
+ * Handles logging and debug messages.
+ * 
+ * @author Qowface
+ */
 public class Loggy {
     
     private Plugin plugin;
@@ -13,7 +18,7 @@ public class Loggy {
     public Loggy(Plugin plugin) {
         this.plugin = plugin;
         log = plugin.getLogger();
-        debug = plugin.getConfig().getBoolean("Config.Debug");
+        debug = plugin.getConfig().getBoolean("Config.Debug", false);
     }
     
     public void info(String msg) {
@@ -29,5 +34,4 @@ public class Loggy {
             log.log(Level.INFO, "[Debug] {0}", msg);
         }
     }
-    
 }
