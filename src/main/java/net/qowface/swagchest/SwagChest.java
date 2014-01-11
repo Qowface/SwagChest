@@ -12,6 +12,11 @@ import net.qowface.swagchest.util.Loggy;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Main class.
+ * 
+ * @author Qowface
+ */
 public class SwagChest extends JavaPlugin {
     
     public Loggy log;
